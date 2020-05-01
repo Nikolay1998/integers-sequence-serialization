@@ -14,5 +14,6 @@
       <Button fx:id="deleteButton" layoutX="169.0" layoutY="254.0" mnemonicParsing="false" onAction="#delete" text="Удалить" />
       <Label layoutX="34.0" layoutY="173.0" text="Индекс" />
       <Label layoutX="34.0" layoutY="204.0" text="Значение" />
+      <Label fx:id="errorLabel" layoutX="31.0" layoutY="123.0" textFill="#f80000" />
    </children>
 </Pane>

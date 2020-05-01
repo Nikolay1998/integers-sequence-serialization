@@ -22,6 +22,8 @@ public class Controller implements Initializable {
     Button addButton;
     @FXML
     Label stateLabel;
+    @FXML
+    Label errorLabel;
 
     private StateManager stateManager;
     private ArrayList<Integer> sequence;
@@ -38,18 +40,33 @@ public class Controller implements Initializable {
     }
 
     public void add() {
-        Integer index = Integer.valueOf(indexTextField.getText());
-        Integer value = Integer.valueOf(valueTextField.getText());
-        sequence.add(index, value);
-        stateLabel.setText(sequence.toString());
-        System.out.println("Add!");
+        errorLabel.setText("");
+        try {
+            Integer index = Integer.valueOf(indexTextField.getText());
+            Integer value = Integer.valueOf(valueTextField.getText());
+            sequence.add(index, value);
+            stateLabel.setText(sequence.toString());
+            System.out.println("Add!");
+        }catch (NumberFormatException ex){
+            errorLabel.setText("Enter correct index and value");
+        }catch (IndexOutOfBoundsException ex){
+            errorLabel.setText("Can't add element with " + indexTextField.getText() + " index");
+        }
+
     }
 
     public void delete() {
-        Integer index = Integer.valueOf(indexTextField.getText());
-        sequence.remove((int)index);
-        stateLabel.setText(sequence.toString());
-        System.out.println("Delete!");
+        errorLabel.setText("");
+        try {
+            Integer index = Integer.valueOf(indexTextField.getText());
+            sequence.remove((int) index);
+            stateLabel.setText(sequence.toString());
+            System.out.println("Delete!");
+        }catch (NumberFormatException ex){
+            errorLabel.setText("Enter correct index");
+        }catch (IndexOutOfBoundsException e){
+            errorLabel.setText("There is no element with " + indexTextField.getText() + " index");
+        }
     }
 
     public void onClose() {
