@@ -1,12 +1,10 @@
-package sample;
+package app;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.WindowEvent;
 
 import javax.xml.bind.JAXBException;
 import java.net.URL;
@@ -47,9 +45,9 @@ public class Controller implements Initializable {
             sequence.add(index, value);
             stateLabel.setText(sequence.toString());
             System.out.println("Add!");
-        }catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             errorLabel.setText("Enter correct index and value");
-        }catch (IndexOutOfBoundsException ex){
+        } catch (IndexOutOfBoundsException ex) {
             errorLabel.setText("Can't add element with " + indexTextField.getText() + " index");
         }
 
@@ -62,9 +60,9 @@ public class Controller implements Initializable {
             sequence.remove((int) index);
             stateLabel.setText(sequence.toString());
             System.out.println("Delete!");
-        }catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             errorLabel.setText("Enter correct index");
-        }catch (IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             errorLabel.setText("There is no element with " + indexTextField.getText() + " index");
         }
     }

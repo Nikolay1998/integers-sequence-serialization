@@ -1,4 +1,4 @@
-package sample;
+package app;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;

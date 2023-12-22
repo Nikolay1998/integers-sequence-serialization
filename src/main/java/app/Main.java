@@ -1,4 +1,4 @@
-package sample;
+package app;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -13,16 +13,16 @@ public class Main extends Application {
     public Stage primaryStage;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("sample.fxml"));
+        loader.setLocation(getClass().getClassLoader().getResource("sample.fxml"));
         Parent root = loader.load();
         this.primaryStage = primaryStage;
         primaryStage.setTitle("Sequence");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         Controller controller = loader.getController();
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
                 controller.onClose();
